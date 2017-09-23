@@ -197,4 +197,100 @@ defmodule Wol.Organization do
   def change_iteration(%Iteration{} = iteration) do
     Iteration.changeset(iteration, %{})
   end
+
+  alias Wol.Organization.PairIteration
+
+  @doc """
+  Returns the list of pair_iterations.
+
+  ## Examples
+
+      iex> list_pair_iterations()
+      [%PairIteration{}, ...]
+
+  """
+  def list_pair_iterations do
+    Repo.all(PairIteration)
+  end
+
+  @doc """
+  Gets a single pair_iteration.
+
+  Raises `Ecto.NoResultsError` if the Pair iteration does not exist.
+
+  ## Examples
+
+      iex> get_pair_iteration!(123)
+      %PairIteration{}
+
+      iex> get_pair_iteration!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_pair_iteration!(id), do: Repo.get!(PairIteration, id)
+
+  @doc """
+  Creates a pair_iteration.
+
+  ## Examples
+
+      iex> create_pair_iteration(%{field: value})
+      {:ok, %PairIteration{}}
+
+      iex> create_pair_iteration(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_pair_iteration(attrs \\ %{}) do
+    %PairIteration{}
+    |> PairIteration.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a pair_iteration.
+
+  ## Examples
+
+      iex> update_pair_iteration(pair_iteration, %{field: new_value})
+      {:ok, %PairIteration{}}
+
+      iex> update_pair_iteration(pair_iteration, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_pair_iteration(%PairIteration{} = pair_iteration, attrs) do
+    pair_iteration
+    |> PairIteration.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a PairIteration.
+
+  ## Examples
+
+      iex> delete_pair_iteration(pair_iteration)
+      {:ok, %PairIteration{}}
+
+      iex> delete_pair_iteration(pair_iteration)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_pair_iteration(%PairIteration{} = pair_iteration) do
+    Repo.delete(pair_iteration)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking pair_iteration changes.
+
+  ## Examples
+
+      iex> change_pair_iteration(pair_iteration)
+      %Ecto.Changeset{source: %PairIteration{}}
+
+  """
+  def change_pair_iteration(%PairIteration{} = pair_iteration) do
+    PairIteration.changeset(pair_iteration, %{})
+  end
 end

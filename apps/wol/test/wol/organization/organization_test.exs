@@ -124,4 +124,68 @@ defmodule Wol.OrganizationTest do
       assert %Ecto.Changeset{} = Organization.change_iteration(iteration)
     end
   end
+
+  describe "pair_iterations" do
+    alias Wol.Organization.PairIteration
+
+    @valid_attrs %{iteration_id: 42, person1_id: 42, person2_id: 42}
+    @update_attrs %{iteration_id: 43, person1_id: 43, person2_id: 43}
+    @invalid_attrs %{iteration_id: nil, person1_id: nil, person2_id: nil}
+
+    def pair_iteration_fixture(attrs \\ %{}) do
+      {:ok, pair_iteration} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Organization.create_pair_iteration()
+
+      pair_iteration
+    end
+
+    test "list_pair_iterations/0 returns all pair_iterations" do
+      pair_iteration = pair_iteration_fixture()
+      assert Organization.list_pair_iterations() == [pair_iteration]
+    end
+
+    test "get_pair_iteration!/1 returns the pair_iteration with given id" do
+      pair_iteration = pair_iteration_fixture()
+      assert Organization.get_pair_iteration!(pair_iteration.id) == pair_iteration
+    end
+
+    test "create_pair_iteration/1 with valid data creates a pair_iteration" do
+      assert {:ok, %PairIteration{} = pair_iteration} = Organization.create_pair_iteration(@valid_attrs)
+      assert pair_iteration.iteration_id == 42
+      assert pair_iteration.person1_id == 42
+      assert pair_iteration.person2_id == 42
+    end
+
+    test "create_pair_iteration/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Organization.create_pair_iteration(@invalid_attrs)
+    end
+
+    test "update_pair_iteration/2 with valid data updates the pair_iteration" do
+      pair_iteration = pair_iteration_fixture()
+      assert {:ok, pair_iteration} = Organization.update_pair_iteration(pair_iteration, @update_attrs)
+      assert %PairIteration{} = pair_iteration
+      assert pair_iteration.iteration_id == 43
+      assert pair_iteration.person1_id == 43
+      assert pair_iteration.person2_id == 43
+    end
+
+    test "update_pair_iteration/2 with invalid data returns error changeset" do
+      pair_iteration = pair_iteration_fixture()
+      assert {:error, %Ecto.Changeset{}} = Organization.update_pair_iteration(pair_iteration, @invalid_attrs)
+      assert pair_iteration == Organization.get_pair_iteration!(pair_iteration.id)
+    end
+
+    test "delete_pair_iteration/1 deletes the pair_iteration" do
+      pair_iteration = pair_iteration_fixture()
+      assert {:ok, %PairIteration{}} = Organization.delete_pair_iteration(pair_iteration)
+      assert_raise Ecto.NoResultsError, fn -> Organization.get_pair_iteration!(pair_iteration.id) end
+    end
+
+    test "change_pair_iteration/1 returns a pair_iteration changeset" do
+      pair_iteration = pair_iteration_fixture()
+      assert %Ecto.Changeset{} = Organization.change_pair_iteration(pair_iteration)
+    end
+  end
 end

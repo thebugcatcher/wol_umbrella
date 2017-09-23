@@ -16,6 +16,9 @@ defmodule WolWeb.Router do
   scope "/", WolWeb do
     pipe_through :browser # Use the default browser stack
 
+    resources "/iterations", IterationController
+    resources "/pair_iterations", PairIterationController
+    resources "/people", PeopleController
     get "/", PageController, :index
   end
 

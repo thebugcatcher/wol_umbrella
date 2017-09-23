@@ -19,7 +19,7 @@ defmodule WolWeb.PersonController do
       {:ok, person} ->
         conn
         |> put_flash(:info, "Person created successfully.")
-        |> redirect(to: person_path(conn, :show, person))
+        |> redirect(to: people_path(conn, :show, person))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -43,7 +43,7 @@ defmodule WolWeb.PersonController do
       {:ok, person} ->
         conn
         |> put_flash(:info, "Person updated successfully.")
-        |> redirect(to: person_path(conn, :show, person))
+        |> redirect(to: people_path(conn, :show, person))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", person: person, changeset: changeset)
     end
@@ -55,6 +55,6 @@ defmodule WolWeb.PersonController do
 
     conn
     |> put_flash(:info, "Person deleted successfully.")
-    |> redirect(to: person_path(conn, :index))
+    |> redirect(to: people_path(conn, :index))
   end
 end
