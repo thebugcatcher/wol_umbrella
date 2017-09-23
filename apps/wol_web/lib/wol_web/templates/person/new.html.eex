@@ -1,5 +1,5 @@
 <h2>New Person</h2>
 
-<%= render "form.html", Map.put(assigns, :action, people_path(@conn, :create)) %>
+<%= render "form.html", Map.put(assigns, :action, person_path(@conn, :create)) %>
 
-<span><%= link "Back", to: people_path(@conn, :index) %></span>
+<span><%= link "Back", to: person_path(@conn, :index) %></span>

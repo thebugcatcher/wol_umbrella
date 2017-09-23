@@ -1,36 +1,16 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2><%= gettext "Welcome to the %{name}!", name: "Wheel of Lunch" %></h2>
+  <p class="lead">A productive way of spinning wheel during Friday meetings</br>
+    This App was built by the team <b><i>Wheel Under the Umbrella</i></b>.
+  </p>
 </div>
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
+    <h4>Developers</h4>
+    <b><i> Adi Iyengar </i></b></br>
+      <b><i> Arina Igumenshcheva </i></b></br>
+        <b><i> Kate Weeks </i></b></br>
+      <b><i> Lucy Parker </i></b></br>
   </div>
 </div>

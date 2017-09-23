@@ -1,0 +1,3 @@
+<span><%= link "Logo", to: page_path(@conn, :index) %></span>
+<span><%= link "People", to: person_path(@conn, :index) %></span>
+<span><%= link "Wheel History", to: pair_iteration_path(@conn, :index) %></span>
