@@ -14,6 +14,5 @@ defmodule Wol.Organization.Iteration do
   def changeset(%Iteration{} = iteration, attrs) do
     iteration
     |> cast(attrs, [:end_date])
-    |> validate_required([:end_date])
   end
 end
