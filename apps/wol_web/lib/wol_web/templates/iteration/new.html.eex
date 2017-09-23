@@ -1,5 +1,0 @@
-<h2>New Iteration</h2>
-
-<%= render "form.html", Map.put(assigns, :action, iteration_path(@conn, :create)) %>
-
-<span><%= link "Back", to: iteration_path(@conn, :index) %></span>
