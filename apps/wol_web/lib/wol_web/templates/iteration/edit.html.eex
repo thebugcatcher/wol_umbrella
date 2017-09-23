@@ -1,0 +1,5 @@
+<h2>Edit Iteration</h2>
+
+<%= render "form.html", Map.put(assigns, :action, iteration_path(@conn, :update, @iteration)) %>
+
+<span><%= link "Back", to: iteration_path(@conn, :index) %></span>
