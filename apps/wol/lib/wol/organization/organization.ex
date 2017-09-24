@@ -293,4 +293,47 @@ defmodule Wol.Organization do
   def change_pair_iteration(%PairIteration{} = pair_iteration) do
     PairIteration.changeset(pair_iteration, %{})
   end
+
+  def get_current_iteration() do
+    Iteration
+    |> last(:inserted_at)
+    |> Repo.one
+  end
+
+  def is_paired?(person) do
+    person_id = person.id
+    iteration_id = get_current_iteration().id
+
+    query = from pi in PairIteration,
+      where: (
+        pi.iteration_id == ^iteration_id
+      ) and
+      (
+        pi.person1_id == ^person_id or
+        pi.person2_id == ^person_id
+      ),
+      select: count(pi.id)
+
+    Repo.one(query) > 0
+  end
+
+  def is_unrelated?(%Person{id: id}, %Person{id: id}), do: false
+
+  def is_unrelated?(person, potential_relative) do
+    person_id = person.id
+    pr_id = potential_relative.id
+
+    query = from r in Wol.Organization.Relationship,
+      where: (
+        r.person1_id == ^person_id and
+        r.person2_id == ^pr_id
+      ) or
+      (
+        r.person1_id == ^pr_id and
+        r.person2_id == ^person_id
+      ),
+      select: count(r.id)
+
+    Repo.one(query) == 0
+  end
 end
