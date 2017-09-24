@@ -317,6 +317,28 @@ defmodule Wol.Organization do
     Repo.one(query) > 0
   end
 
+  def paired_person_ids() do
+    query = from pi in PairIteration,
+      where: pi.iteration_id == ^get_current_iteration().id,
+      select: {pi.person1_id, pi.person2_id}
+
+    query
+    |> Repo.all()
+    |> Enum.reduce([], fn({x, y}, acc) -> acc ++ [x] ++ [y] end)
+  end
+
+  def load_relatives(person) do
+    query1 = from r in Wol.Organization.Relationship,
+      where: r.person1_id == ^person.id,
+      select: r.person2_id
+
+    query2 = from r in Wol.Organization.Relationship,
+      where: r.person2_id == ^person.id,
+      select: r.person1_id
+
+    Repo.all(query1) ++ Repo.all(query2)
+  end
+
   def is_unrelated?(%Person{id: id}, %Person{id: id}), do: false
 
   def is_unrelated?(person, potential_relative) do
