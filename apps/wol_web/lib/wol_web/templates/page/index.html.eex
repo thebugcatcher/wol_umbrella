@@ -1,29 +1,30 @@
-<h2>Lets Spin!!!!</h2>
+<div class="">
+  <h2>Lets Spin!!!!</h2>
 
-<div>
-  <iframe
-    src=<%= form_wheel_url(@spin1_people) %>
-    width="800"
-    height="800"
-    scrolling="no"
-    frameborder="0">
-  </iframe>
+  <%= case @spin1_people do
+    {:done, person} ->
+      render "wheel.html",
+        people: @spin2_people,
+        person: person
+
+    [] -> render "no_person.html"
+    _ -> render "wheel.html", people: @spin1_people
+  end %>
+
+  <%= case @spin1_people do
+    {:done, person} ->
+      render "person2_selector.html",
+        people: @spin2_people,
+        person: person,
+        conn: @conn
+
+    [] -> ""
+    _ ->
+      render "person1_selector.html",
+        people: @spin1_people,
+        conn: @conn
+  end%>
+
+</div>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for person <- @spin1_people do %>
-        <tr>
-          <td><%= person.name %></td>
-
-        </tr>
-    <% end %>
-  </tbody>
-</table>

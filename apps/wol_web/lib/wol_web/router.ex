@@ -16,10 +16,13 @@ defmodule WolWeb.Router do
   scope "/", WolWeb do
     pipe_through :browser # Use the default browser stack
 
-    resources "/people", PersonController
-    resources "/pair_iterations", PairIterationController
     get "/", PageController, :index
     get "/about", PageController, :about
+    get "/first_select/:id", PageController, :first_select
+    get "/second_select/:id", PageController, :second_select
+
+    resources "/people", PersonController
+    resources "/pair_iterations", PairIterationController
   end
 
   # Other scopes may use custom stacks.
