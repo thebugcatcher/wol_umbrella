@@ -10,7 +10,7 @@ defmodule WolWeb.PageController do
     people = Org.list_people()
       |> Filterer.filter(index_filters())
 
-    {:ok, iteration} = IterationsManager.check_iteration()
+    iteration = Org.get_current_iteration()
 
     {queryable, rummage} = Org.Person
       |> Rummage.Ecto.rummage(params["rummage"])
