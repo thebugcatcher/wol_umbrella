@@ -70,6 +70,8 @@ defmodule WolWeb.PageController do
 
     case Org.create_pair_iteration(attrs) do
       {:ok, _} ->
+        Emailer.send_pair_notification([person1, person2])
+
         conn
         |> assign(:person, nil)
         |> put_flash(:info, "Paired: #{person1.name} & #{person2.name}")
