@@ -13,7 +13,7 @@
 ### Optional
 
 - [x] Maintains a history of pairs
-- [ ] Emails pairs when selected
+- [x] Emails pairs when selected
 - [ ] Sound effects
 - [x] Matches non-related pairs
 
