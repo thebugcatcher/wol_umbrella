@@ -19,10 +19,8 @@ defmodule WolWeb.PageController do
 
     render conn,
       "index.html",
-      spin1_people: people,
-      spin2_people: [],
-      rummage: rummage,
-      rummaged: rummaged,
+      people: people,
+      person: :nil,
       iteration: iteration
   end
 
@@ -30,9 +28,8 @@ defmodule WolWeb.PageController do
     render conn, "about.html"
   end
 
-  def first_select(conn, %{"id" => person_id} = params) do
-    person = Org.get_person!(person_id)
-    conn = put_session(conn, :person_id, person.id)
+  def first_select(conn, %{"name" => person_name} = params) do
+    person = Wol.Repo.get_by!(Org.Person, [name: person_name])
 
     {:ok, iteration} = IterationsManager.check_iteration()
 
@@ -53,19 +50,15 @@ defmodule WolWeb.PageController do
     rummaged = Wol.Repo.all(queryable)
 
     render conn,
-      "index.html",
-      spin1_people: {:done, person},
-      spin2_people: people,
-      rummage: rummage,
-      rummaged: rummaged,
+      "person2_selector.html",
+      people: people,
+      person: person,
       iteration: iteration
   end
 
-  def second_select(conn, %{"id" => person_id}) do
-    person2 = Org.get_person!(person_id)
-    person1 = conn
-      |> get_session(:person_id)
-      |> Org.get_person!()
+  def second_select(conn, %{"name" => person_name, "second" => second_person_name}) do
+    person1 = Wol.Repo.get_by!(Org.Person, [name: person_name])
+    person2 = Wol.Repo.get_by!(Org.Person, [name: second_person_name])
 
     iteration = Org.get_current_iteration()
 
