@@ -38,6 +38,7 @@ defmodule WolWeb.Mixfile do
   defp deps do
     [
       {:iterations_manager, in_umbrella: true},
+      {:emailer, in_umbrella: true},
       {:phoenix, "~> 1.3.0-rc", override: true},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
