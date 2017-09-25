@@ -4,38 +4,38 @@
 
 ### Required
 
-- [] Adequate Substitute for the current solution
-- [] Easy Addition/Removal/Update of employees
-- [] Autofilters inapplicable people (paired people)
-- [] Doesn't match same people over once we run it
-- [] Actual Wheel exists
+- [x] Adequate Substitute for the current solution
+- [x] Easy Addition/Removal/Update of employees
+- [x] Autofilters inapplicable people (paired people)
+- [x] Doesn't match same people over once we run it
+- [x] Actual Wheel exists
 
 ### Optional
 
-- [] Maintains a history of pairs
-- [] Emails pairs when selected
-- [] Sound effects
-- [] Matches non-related pairs
+- [x] Maintains a history of pairs
+- [ ] Emails pairs when selected
+- [ ] Sound effects
+- [x] Matches non-related pairs
 
 ### Additional
 
-- [] Can generate a given number of pairs following all the rules without a UI
-- [] Doesn't match same people upto a configured number of iterations
-- [] Authorization through Annkissam Email
-- [] Restricted user permission
-- [] Mobile friendly
+- [ ] Can generate a given number of pairs following all the rules without a UI
+- [ ] Doesn't match same people upto a configured number of iterations
+- [ ] Authorization through Annkissam Email
+- [ ] Restricted user permission
+- [x] Mobile friendly
 
 ### Edge cases
 
-- [] When there's odd number of people
-- [] When last two/three people left are related (nC2 number of people, where n is the number of relationships)
+- [x] When there's odd number of people
+- [ ] When last two/three people left are related (nC2 number of people, where n is the number of relationships)
 
 
 ## TODO
 
-- [] Move spinning to a different route
-- [] Add a route for autogeneration of pairs
-- [] Good CSS font
+- [ ] Move spinning to a different route
+- [ ] Add a route for autogeneration of pairs
+- [ ] Good CSS font
 - [x] Uniqueness constraint for name, email
 
 ## AUTHORS
