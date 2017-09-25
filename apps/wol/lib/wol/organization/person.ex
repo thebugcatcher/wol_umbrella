@@ -16,5 +16,7 @@ defmodule Wol.Organization.Person do
     person
     |> cast(attrs, [:name, :email])
     |> validate_required([:name, :email])
+    |> unique_constraint(:name)
+    |> unique_constraint(:email)
   end
 end
