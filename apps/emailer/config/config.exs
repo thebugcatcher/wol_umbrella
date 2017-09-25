@@ -29,6 +29,6 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 
-config :ui, Ui.Mailer,
+config :emailer, Emailer,
   adapter: Bamboo.MandrillAdapter,
   api_key: System.get_env("MANDRILL_API_KEY")  # Need to extract this out, but Bamboo doesn't support run-time config at this point
