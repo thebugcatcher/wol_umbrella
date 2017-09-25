@@ -12,28 +12,7 @@
     <table cellpadding="0" cellspacing="0" border="0">
     <tr>
         <td>
-            <div class="power_controls">
-                <br />
-                <br />
-                <table class="power" cellpadding="10" cellspacing="0">
-                    <tr>
-                        <th align="center">Power</th>
-                    </tr>
-                    <tr>
-                        <td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td>
-                    </tr>
-                    <tr>
-                        <td align="center" id="pw2" onClick="powerSelected(2);">Med</td>
-                    </tr>
-                    <tr>
-                        <td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
-                    </tr>
-                </table>
-                <br />
-                <img id="spin_button" src="<%= static_path(@conn, "/images/spin_off.png") %>" alt="Spin" onClick="startSpin();" />
-                <br /><br />
-                &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Spin Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
-            </div>
+          <img id="spin_button" src="<%= static_path(@conn, "/images/spin_off.png") %>" alt="Spin" onClick="startSpin();" />
         </td>
         <td width="900" height="1200" class="the_wheel" align="center" valign="center">
             <canvas id="canvas" width="900" height="900">
@@ -46,9 +25,18 @@
     var count = <%= Enum.count(@people) %>
     var arr_str = "<%= Enum.map(@people, & &1.name) |> Enum.join(" - ") %>"
     var arr = arr_str.split(" - ")
+    var colors = [
+      '#eae56f',
+      '#89f26e',
+      '#7de6ef',
+      '#e7706f',
+      '#0000ff',
+    ]
+
     var segments = []
     for (i = 0; i < arr.length; i++) {
-      segments.push({'fillStyle' : '<%= color(Enum.random([0, 1, 2, 3])) %>', 'text' : arr[i]})
+      color = colors[i % 5]
+      segments.push({'fillStyle' : color, 'text' : arr[i]})
     }
 
     // Create new wheel object specifying the parameters at creation time.
@@ -69,46 +57,10 @@
     });
 
     // Vars used by the code in this page to do power controls.
-    var wheelPower    = 1;
+    var wheelPower    = 2;
     var wheelSpinning = false;
-
-    // -------------------------------------------------------
-    // Function to handle the onClick on the power buttons.
-    // -------------------------------------------------------
-    function powerSelected(powerLevel)
-    {
-        // Ensure that power can't be changed while wheel is spinning.
-        if (wheelSpinning == false)
-        {
-            // Reset all to grey incase this is not the first time the user has selected the power.
-            document.getElementById('pw1').className = "";
-            document.getElementById('pw2').className = "";
-            document.getElementById('pw3').className = "";
-
-            // Now light up all cells below-and-including the one selected by changing the class.
-            if (powerLevel >= 1)
-            {
-                document.getElementById('pw1').className = "pw1";
-            }
-
-            if (powerLevel >= 2)
-            {
-                document.getElementById('pw2').className = "pw2";
-            }
-
-            if (powerLevel >= 3)
-            {
-                document.getElementById('pw3').className = "pw3";
-            }
-
-            // Set wheelPower var used when spin button is clicked.
-            wheelPower = powerLevel;
-
-            // Light up the spin button by changing it's source image and adding a clickable class to it.
-            document.getElementById('spin_button').src = "<%= static_path(@conn, "/images/spin_on.png") %>";
-            document.getElementById('spin_button').className = "clickable";
-        }
-    }
+    document.getElementById('spin_button').src = "<%= static_path(@conn, "/images/spin_on.png") %>";
+    document.getElementById('spin_button').className = "clickable";
 
     // -------------------------------------------------------
     // Click handler for spin button.
