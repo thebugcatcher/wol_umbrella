@@ -18,15 +18,10 @@ defmodule WolWeb.Router do
 
     get "/", PageController, :index
     get "/about", PageController, :about
-    get "/first_select/:id", PageController, :first_select
-    get "/second_select/:id", PageController, :second_select
+    get "/first_select/", PageController, :first_select
+    get "/second_select/", PageController, :second_select
 
     resources "/people", PersonController
     resources "/pair_iterations", PairIterationController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", WolWeb do
-  #   pipe_through :api
-  # end
 end
