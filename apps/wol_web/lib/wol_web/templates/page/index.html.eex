@@ -5,128 +5,131 @@
 
 </div>
 
-<div align="center">
-    <h1>The Wheel of Lunch is ready to be Spun!</h1>
-    <br />
-    <p>Choose a power setting then press the Spin button. You will be alerted to the prize won when the spinning stops.</p>
-    <br />
-    <table cellpadding="0" cellspacing="0" border="0">
-    <tr>
-        <td>
-          <img id="spin_button" src="<%= static_path(@conn, "/images/spin_off.png") %>" alt="Spin" onClick="startSpin();" />
-        <br /><br />
-        </td>
-        <td width="900" height="1200" class="the_wheel" align="center" valign="center">
-            <canvas id="canvas" width="900" height="900">
-                <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
-            </canvas>
-        </td>
-    </tr>
-</table>
-  <script>
-    var count = <%= Enum.count(@people) %>
-    var arr_str = "<%= Enum.map(@people, & &1.name) |> Enum.join(" - ") %>"
-    var arr = arr_str.split(" - ")
-    var colors = [
-      '#eae56f',
-      '#89f26e',
-      '#7de6ef',
-      '#e7706f',
-      '#0000ff',
-    ]
+<div class="jumbotron">
+  <div align="center">
+      <h1>The Wheel of Lunch is ready!</h1>
+      <br />
+      <p>Press the Spin button to select a person..</p>
+      <br />
+      <table cellpadding="0" cellspacing="0" border="0">
+      <tr>
+          <td>
+            <img id="spin_button" src="<%= static_path(@conn, "/images/spin_off.png") %>" alt="Spin" onClick="startSpin();" />
+          <br /><br />
+          </td>
+          <td width="900" height="1200" class="the_wheel" align="center" valign="center">
+              <canvas id="canvas" width="900" height="900">
+                  <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+              </canvas>
+          </td>
+      </tr>
+  </table>
+    <script>
+      var count = <%= Enum.count(@people) %>
+      var arr_str = "<%= Enum.map(@people, & &1.name) |> Enum.join(" - ") %>"
+      var arr = arr_str.split(" - ")
+      var colors = [
+        '#eae56f',
+        '#89f26e',
+        '#7de6ef',
+        '#e7706f',
+        '#0000ff',
+      ]
 
-    var segments = []
-    for (i = 0; i < arr.length; i++) {
-      color = colors[i % 5]
-      segments.push({'fillStyle' : color, 'text' : arr[i]})
-    }
+      var segments = []
+      for (i = 0; i < arr.length; i++) {
+        color = colors[i % 5]
+        segments.push({'fillStyle' : color, 'text' : arr[i]})
+      }
 
-    // Create new wheel object specifying the parameters at creation time.
-    var theWheel = new Winwheel({
-        'numSegments'   : count,   // Specify number of segments.
-        'outerRadius'   : 450,  // Set radius to so wheel fits the background.
-        'innerRadius'   : 0,  // Set inner radius to make wheel hollow.
-        'textFontSize'  : 25,   // Set font size accordingly.
-        'textMargin'    : 0,    // Take out default margin.
-        'segments'      : segments, // Define segments including colour and text.
-        'animation' :           // Define spin to stop animation.
-        {
-            'type'     : 'spinToStop',
-            'duration' : 5,
-            'spins'    : 8,
-            'callbackFinished' : 'alertPrize()'
-        }
-    });
+      // Create new wheel object specifying the parameters at creation time.
+      var theWheel = new Winwheel({
+          'numSegments'   : count,   // Specify number of segments.
+          'outerRadius'   : 450,  // Set radius to so wheel fits the background.
+          'innerRadius'   : 0,  // Set inner radius to make wheel hollow.
+          'textFontSize'  : 25,   // Set font size accordingly.
+          'textMargin'    : 0,    // Take out default margin.
+          'segments'      : segments, // Define segments including colour and text.
+          'animation' :           // Define spin to stop animation.
+          {
+              'type'     : 'spinToStop',
+              'duration' : 5,
+              'spins'    : 8,
+              'callbackFinished' : 'alertPrize()'
+          }
+      });
 
-    // Vars used by the code in this page to do power controls.
-    var wheelPower    = 2;
-    var wheelSpinning = false;
-    document.getElementById('spin_button').src = "<%= static_path(@conn, "/images/spin_on.png") %>";
-    document.getElementById('spin_button').className = "clickable";
+      // Vars used by the code in this page to do power controls.
+      var wheelPower    = 2;
+      var wheelSpinning = false;
+      document.getElementById('spin_button').src = "<%= static_path(@conn, "/images/spin_on.png") %>";
+      document.getElementById('spin_button').className = "clickable";
 
-    // -------------------------------------------------------
-    // Click handler for spin button.
-    // -------------------------------------------------------
-    function startSpin()
-    {
-        // Ensure that spinning can't be clicked again while already running.
-        if (wheelSpinning == false)
-        {
-            // Based on the power level selected adjust the number of spins for the wheel, the more times is has
-            // to rotate with the duration of the animation the quicker the wheel spins.
-            if (wheelPower == 1)
-            {
-                theWheel.animation.spins = 3;
-            }
-            else if (wheelPower == 2)
-            {
-                theWheel.animation.spins = 8;
-            }
-            else if (wheelPower == 3)
-            {
-                theWheel.animation.spins = 15;
-            }
+      // -------------------------------------------------------
+      // Click handler for spin button.
+      // -------------------------------------------------------
+      function startSpin()
+      {
+          // Ensure that spinning can't be clicked again while already running.
+          if (wheelSpinning == false)
+          {
+              // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+              // to rotate with the duration of the animation the quicker the wheel spins.
+              if (wheelPower == 1)
+              {
+                  theWheel.animation.spins = 3;
+              }
+              else if (wheelPower == 2)
+              {
+                  theWheel.animation.spins = 8;
+              }
+              else if (wheelPower == 3)
+              {
+                  theWheel.animation.spins = 15;
+              }
 
-            // Disable the spin button so can't click again while wheel is spinning.
-            document.getElementById('spin_button').src       = "<%= static_path(@conn, "/images/spin_off.png") %>";
-            document.getElementById('spin_button').className = "";
+              // Disable the spin button so can't click again while wheel is spinning.
+              document.getElementById('spin_button').src       = "<%= static_path(@conn, "/images/spin_off.png") %>";
+              document.getElementById('spin_button').className = "";
 
-            // Begin the spin animation by calling startAnimation on the wheel object.
-            theWheel.startAnimation();
+              // Begin the spin animation by calling startAnimation on the wheel object.
+              theWheel.startAnimation();
 
-            // Set to true so that power can't be changed and spin button re-enabled during
-            // the current animation. The user will have to reset before spinning again.
-            wheelSpinning = true;
-        }
-    }
+              // Set to true so that power can't be changed and spin button re-enabled during
+              // the current animation. The user will have to reset before spinning again.
+              wheelSpinning = true;
+          }
+      }
 
-    // -------------------------------------------------------
-    // Function for reset button.
-    // -------------------------------------------------------
-    function resetWheel()
-    {
-        theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
-        theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
-        theWheel.draw();                // Call draw to render changes to the wheel.
+      // -------------------------------------------------------
+      // Function for reset button.
+      // -------------------------------------------------------
+      function resetWheel()
+      {
+          theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+          theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+          theWheel.draw();                // Call draw to render changes to the wheel.
 
-        document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
-        document.getElementById('pw2').className = "";
-        document.getElementById('pw3').className = "";
+          wheelPower    = 2;
+          wheelSpinning = false;
+          document.getElementById('spin_button').src = "<%= static_path(@conn, "/images/spin_on.png") %>";
+          document.getElementById('spin_button').className = "clickable";
+      }
 
-        wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
-    }
+      // -------------------------------------------------------
+      // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
+      // -------------------------------------------------------
+      function alertPrize()
+      {
+          // Get the segment indicated by the pointer on the wheel background which is at 0 degrees.
+          var winningSegment = theWheel.getIndicatedSegment();
 
-    // -------------------------------------------------------
-    // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
-    // -------------------------------------------------------
-    function alertPrize()
-    {
-        // Get the segment indicated by the pointer on the wheel background which is at 0 degrees.
-        var winningSegment = theWheel.getIndicatedSegment();
-
-        // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
-        alert("The Wheel has picked " + winningSegment.text + ". Hit Ok to select the next person..");
-        window.location = '/first_select?name=' + winningSegment.text;
-    }
-</script>
-
+          // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
+          if (confirm("The Wheel has picked " + winningSegment.text + ". Hit Ok to select the next person..") == true) {
+            window.location = '/first_select?name=' + winningSegment.text;
+          }else{
+            resetWheel();
+          }
+      }
+  </script>
+</div>

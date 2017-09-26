@@ -1,7 +1,20 @@
 <div class="container">
-  <h2>New Person</h2>
+  <div>
+    <p>Placeholder</p>
+  </div>
 
-  <%= render "form.html", Map.put(assigns, :action, person_path(@conn, :create)) %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">New Person</h2>
+    </div>
 
-  <span><%= link "Back", to: person_path(@conn, :index) %></span>
+    <div class="panel-body">
+      <%= render "form.html", Map.put(assigns, :action, person_path(@conn, :create)) %>
+    </div>
+
+    <div class="panel-footer clearfix">
+      <%= link to: person_path(@conn, :index), class: "btn btn-default btn-xs pull-left" do %>
+        <span aria-hidden="true">&larr;</span> Back to all People
+      <% end %>
+    </div>
 </div>

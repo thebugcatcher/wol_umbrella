@@ -70,7 +70,11 @@ defmodule WolWeb.PageController do
 
     case Org.create_pair_iteration(attrs) do
       {:ok, _} ->
-        Emailer.send_pair_notification([person1, person2])
+        try do
+          Emailer.send_pair_notification([person1, person2])
+        rescue
+          _ -> :ok
+        end
 
         conn
         |> assign(:person, nil)

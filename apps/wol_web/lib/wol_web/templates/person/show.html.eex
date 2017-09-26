@@ -1,29 +1,25 @@
 <div class="container">
-  <h2>Showing Person</h2>
+  <div class="panel panel-default" style="overflow: auto">
+    <div class="panel-heading">
+      <h2 class="panel-title">Showing Person</h2>
+    </div>
 
-  <ul>
+    <div class="panel-body">
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr><td><strong>Email</strong></td> <td><%= @person.email %></td></tr>
+          <tr><td><strong>Name</strong></td> <td><%= @person.name %></td></tr>
+          <tr><td><strong>Mentor</strong></td> <td><%= @mentor && @mentor.name || "N/A" %></td></tr>
+          <tr><td><strong>Supervisor</strong></td> <td><%= @supervisor && @supervisor.name || "N/A"%></td></tr>
+        </tbody>
+      </table>
+    </div>
 
-    <li>
-      <strong>Name:</strong>
-      <%= @person.name %>
-    </li>
-
-    <li>
-      <strong>Email:</strong>
-      <%= @person.email %>
-    </li>
-
-    <li>
-      <strong>Mentor:</strong>
-      <%= @mentor && @mentor.name || "N/A" %>
-    </li>
-
-    <li>
-      <strong>Supervisor:</strong>
-      <%= @supervisor && @supervisor.name || "N/A"%>
-    </li>
-  </ul>
-
-  <span><%= link "Edit", to: person_path(@conn, :edit, @person) %></span>
-  <span><%= link "Back", to: person_path(@conn, :index) %></span>
+    <div class="panel-footer clearfix">
+      <span><%= link "Edit", to: person_path(@conn, :edit, @person), class: "btn btn-default btn-xs" %></span>
+      <%= link to: person_path(@conn, :index), class: "btn btn-default btn-xs pull-left" do %>
+        <span aria-hidden="true">&larr;</span> Back to People
+      <% end %>
+    </div>
+  </div>
 </div>

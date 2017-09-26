@@ -1,30 +1,39 @@
 <div class="container">
-  <h2>Listing People</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">People</h2>
+    </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
+    <div class="panel-body">
+      <%= if Enum.count(@people) > 0 do %>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
 
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-  <%= for person <- @people do %>
-      <tr>
-        <td><%= person.name %></td>
-        <td><%= person.email %></td>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+        <%= for person <- @people do %>
+            <tr>
+              <td><%= person.name %></td>
+              <td><%= person.email %></td>
 
-        <td class="text-right">
-          <span><%= link "Show", to: person_path(@conn, :show, person), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Edit", to: person_path(@conn, :edit, person), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Delete", to: person_path(@conn, :delete, person), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-        </td>
-      </tr>
-  <% end %>
-    </tbody>
-  </table>
+              <td class="text-right">
+                <span><%= link "Show", to: person_path(@conn, :show, person), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Edit", to: person_path(@conn, :edit, person), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Delete", to: person_path(@conn, :delete, person), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+              </td>
+            </tr>
+        <% end %>
+          </tbody>
+        </table>
+    <%= else %>
+      <i><strong> No Person added.</strong></i>
+    <% end %>
+  </div>
 
-  <span><%= link "New Person", to: person_path(@conn, :new) %></span>
+  <%= link "Add person", to: person_path(@conn, :new), class: "btn btn-default"%>
 </div>

@@ -4,7 +4,9 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
 </div>
-<div align="center">
+
+<div class="jumbotron">
+  <div align="center">
     <h1>The Wheel of Lunch is ready to be Spun!</h1>
     <br />
     <p>Hit the spin button to get started!.</p>
@@ -41,7 +43,7 @@
             </canvas>
         </td>
     </tr>
-</table>
+  </table>
   <script>
     var count = <%= Enum.count(@people) %>
     var arr_str = "<%= Enum.map(@people, & &1.name) |> Enum.join(" - ") %>"
@@ -174,5 +176,5 @@
         alert("The Wheel has picked " + winningSegment.text + ". Hit Ok to select the next person..");
         window.location = '/first_select?name=' + winningSegment.text;
     }
-</script>
-
+  </script>
+</div>

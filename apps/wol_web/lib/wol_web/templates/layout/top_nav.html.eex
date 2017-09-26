@@ -1,3 +1,29 @@
-<span><%= link "Logo", to: page_path(@conn, :index) %></span>
-<span><%= link "People", to: person_path(@conn, :index) %></span>
-<span><%= link "Wheel History", to: pair_iteration_path(@conn, :index) %></span>
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="<%= page_path(@conn, :index) %>">
+          <img alt="Logo" style="position:relative;top:-13px;right:15px" height="50" width="300" src="<%= static_path(@conn, "/images/annkissam_logo.png") %>">
+        </a>
+      </div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" style="position:relative;right:15px"><strong>Wheel Of Lunch!</strong></a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li class="<%= active_class_for_nav_tab(@conn, "people") %>"><a href="<%= person_path(@conn, :index) %>">People</a></li>
+      <li class="<%= active_class_for_nav_tab(@conn, "pair_iterations") %>"><a href="<%= pair_iteration_path(@conn, :index) %>">Lunches</a></li>
+    </ul>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

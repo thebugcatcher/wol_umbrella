@@ -16,12 +16,16 @@
       <%= render "top_nav.html", conn: @conn %>
     </div>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <div>
+      <p>Placeholder</p>
+    </div>
 
-      <div class="panel" role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </div>
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+    <div class="panel" role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </div>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>

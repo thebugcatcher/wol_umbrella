@@ -1,32 +1,41 @@
 <div class="container">
-  <h2>Listing Pair iterations</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">Lunches</h2>
+    </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Person1</th>
-        <th>Person2</th>
-        <th>Iteration</th>
+    <div class="panel-body">
+      <%= if Enum.count(@pair_iterations) > 0 do %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Person1</th>
+              <th>Person2</th>
+              <th>Iteration</th>
 
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-  <%= for pair_iteration <- @pair_iterations do %>
-      <tr>
-        <td><%= pair_iteration.person1_id %></td>
-        <td><%= pair_iteration.person2_id %></td>
-        <td><%= pair_iteration.iteration_id %></td>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+        <%= for pair_iteration <- @pair_iterations do %>
+            <tr>
+              <td><%= pair_iteration.person1_id %></td>
+              <td><%= pair_iteration.person2_id %></td>
+              <td><%= pair_iteration.iteration_id %></td>
 
-        <td class="text-right">
-          <span><%= link "Show", to: pair_iteration_path(@conn, :show, pair_iteration), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, pair_iteration), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Delete", to: pair_iteration_path(@conn, :delete, pair_iteration), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-        </td>
-      </tr>
-  <% end %>
-    </tbody>
-  </table>
+              <td class="text-right">
+                <span><%= link "Show", to: pair_iteration_path(@conn, :show, pair_iteration), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, pair_iteration), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Delete", to: pair_iteration_path(@conn, :delete, pair_iteration), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+              </td>
+            </tr>
+        <% end %>
+          </tbody>
+        </table>
+    <%= else %>
+      <i><strong> No Lunches to show.</strong></i>
+    <% end %>
+  </div>
 
-  <span><%= link "New Pair iteration", to: pair_iteration_path(@conn, :new) %></span>
+  <%= link "Add Lunch", to: pair_iteration_path(@conn, :new), class: "btn btn-default" %>
 </div>
