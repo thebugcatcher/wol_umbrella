@@ -10,7 +10,11 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Code.require_file("apps/wol/priv/repo/seeds/people_seeds.exs")
-Code.require_file("apps/wol/priv/repo/seeds/relationship_seeds.exs")
+Code.require_file("apps/wol/priv/repo/seeds/factory_seeds.exs")
+# Code.require_file("apps/wol/priv/repo/seeds/people_seeds.exs")
+# Code.require_file("apps/wol/priv/repo/seeds/relationship_seeds.exs")
+
+
+
 Code.require_file("apps/wol/priv/repo/seeds/iteration_seeds.exs")
 

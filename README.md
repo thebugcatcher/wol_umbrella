@@ -37,6 +37,7 @@
 - [x] Add a route for autogeneration of pairs
 - [x] Good CSS font
 - [x] Uniqueness constraint for name, email
+- [] Add better seeds
 
 ## AUTHORS
 

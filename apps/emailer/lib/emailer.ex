@@ -10,11 +10,11 @@ defmodule Emailer do
   @sender "wol@annkissam.com"
 
   def send_pair_notification(people) do
-    # users = for person <- people do
-    #   {user.name, user.email}
-    # end
+    users = for person <- people do
+      {user.name, user.email}
+    end
 
-    users = [{"Adi Iyengar", "adi.iyengar@annkissam.com"}]
+    # users = [{"Adi Iyengar", "adi.iyengar@annkissam.com"}]
 
     names = Enum.reduce(people, "Hi ", &(&2 <> &1.name <> "& "))
       |> String.trim_trailing("& ")
