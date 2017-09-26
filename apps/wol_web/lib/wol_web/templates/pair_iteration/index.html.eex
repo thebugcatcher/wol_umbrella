@@ -9,9 +9,9 @@
         <table class="table">
           <thead>
             <tr>
+              <th>Iteration</th>
               <th>Person1</th>
               <th>Person2</th>
-              <th>Iteration</th>
 
               <th></th>
             </tr>
@@ -19,14 +19,14 @@
           <tbody>
         <%= for pair_iteration <- @pair_iterations do %>
             <tr>
-              <td><%= pair_iteration.person1_id %></td>
-              <td><%= pair_iteration.person2_id %></td>
-              <td><%= pair_iteration.iteration_id %></td>
+              <td><%= elem(pair_iteration, 0) %></td>
+              <td><%= elem(pair_iteration, 1) %></td>
+              <td><%= elem(pair_iteration, 2) %></td>
 
               <td class="text-right">
-                <span><%= link "Show", to: pair_iteration_path(@conn, :show, pair_iteration), class: "btn btn-default btn-xs" %></span>
-                <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, pair_iteration), class: "btn btn-default btn-xs" %></span>
-                <span><%= link "Delete", to: pair_iteration_path(@conn, :delete, pair_iteration), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                <span><%= link "Show", to: pair_iteration_path(@conn, :show, %Wol.Organization.PairIteration{id: elem(pair_iteration, 3)}), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, %Wol.Organization.PairIteration{id: elem(pair_iteration, 3)}), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Delete", to: pair_iteration_path(@conn, :delete, %Wol.Organization.PairIteration{id: elem(pair_iteration, 3)}), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
               </td>
             </tr>
         <% end %>

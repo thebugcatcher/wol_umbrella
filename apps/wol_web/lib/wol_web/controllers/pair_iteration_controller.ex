@@ -5,7 +5,7 @@ defmodule WolWeb.PairIterationController do
   alias Wol.Organization.PairIteration
 
   def index(conn, _params) do
-    pair_iterations = Organization.list_pair_iterations()
+    pair_iterations = Organization.list_pair_iterations(true)
     render(conn, "index.html", pair_iterations: pair_iterations)
   end
 
@@ -27,7 +27,10 @@ defmodule WolWeb.PairIterationController do
 
   def show(conn, %{"id" => id}) do
     pair_iteration = Organization.get_pair_iteration!(id)
-    render(conn, "show.html", pair_iteration: pair_iteration)
+    person1 = Organization.get_person!(pair_iteration.person1_id)
+    person2 = Organization.get_person!(pair_iteration.person2_id)
+
+    render(conn, "show.html", pair_iteration: pair_iteration, person1: person1, person2: person2)
   end
 
   def edit(conn, %{"id" => id}) do

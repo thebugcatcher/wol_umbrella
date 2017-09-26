@@ -7,8 +7,8 @@
     <div class="panel-body">
       <table class="table table-bordered table-hover">
         <tbody>
-          <tr><td><strong>Person1</strong></td> <td><%= @pair_iteration.person1_id %></td></tr>
-          <tr><td><strong>Person2</strong></td> <td><%= @pair_iteration.person2_id %></td></tr>
+          <tr><td><strong>Person1</strong></td> <td><%= @person1.name %></td></tr>
+          <tr><td><strong>Person2</strong></td> <td><%= @person2.name %></td></tr>
           <tr><td><strong>Iteration</strong></td> <td><%= @pair_iteration.iteration_id %></td></tr>
         </tbody>
       </table>

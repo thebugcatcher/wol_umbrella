@@ -213,6 +213,14 @@ defmodule Wol.Organization do
     Repo.all(PairIteration)
   end
 
+  def list_pair_iterations(true) do
+    PairIteration
+    |> join(:inner, [pi], p1 in Person, pi.person1_id == p1.id)
+    |> join(:inner, [pi, p1], p2 in Person, pi.person2_id == p2.id)
+    |> select([pi, p1, p2], {pi.iteration_id, p1.name, p2.name, pi.id})
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single pair_iteration.
 
