@@ -19,7 +19,7 @@
 
 ### Additional
 
-- [ ] Can generate a given number of pairs following all the rules without a UI
+- [x] Can generate a given number of pairs following all the rules without a UI
 - [ ] Doesn't match same people upto a configured number of iterations
 - [x] Session Authentication
 - [x] Mobile friendly
@@ -34,7 +34,7 @@
 
 - [x] UI to add mentors/supervisors
 - [x] UI to see people names in lunches
-- [ ] Add a route for autogeneration of pairs
+- [x] Add a route for autogeneration of pairs
 - [x] Good CSS font
 - [x] Uniqueness constraint for name, email
 
