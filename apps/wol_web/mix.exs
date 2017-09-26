@@ -37,17 +37,18 @@ defmodule WolWeb.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:iterations_manager, in_umbrella: true},
+      {:basic_auth, "~> 2.1.4"},
+      {:cowboy, "~> 1.0"},
       {:emailer, in_umbrella: true},
+      {:gettext, "~> 0.11"},
+      {:iterations_manager, in_umbrella: true},
       {:phoenix, "~> 1.3.0-rc", override: true},
-      {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
+      {:phoenix_pubsub, "~> 1.0"},
       {:rummage_phoenix, "1.2.0"},
       {:wol, in_umbrella: true},
-      {:cowboy, "~> 1.0"}
     ]
   end
 

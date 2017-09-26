@@ -30,6 +30,12 @@ config :rummage_ecto, Rummage.Ecto,
   default_repo: Wol.Repo,
   default_per_page: 5
 
+config :wol_web, http_basic_config: [
+  username: {:system, "WOL_BASIC_AUTH_USERNAME"},
+  password: {:system, "WOL_BASIC_AUTH_PASSWORD"},
+  realm: "wol"
+]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
