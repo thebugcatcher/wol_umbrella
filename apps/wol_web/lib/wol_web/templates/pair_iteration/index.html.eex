@@ -12,6 +12,8 @@
               <th>Iteration</th>
               <th>Person1</th>
               <th>Person2</th>
+              <th>Restaurant</th>
+              <th>Rating</th>
 
               <th></th>
             </tr>
@@ -22,11 +24,13 @@
               <td><%= elem(pair_iteration, 0) %></td>
               <td><%= elem(pair_iteration, 1) %></td>
               <td><%= elem(pair_iteration, 2) %></td>
+              <td><%= elem(pair_iteration, 3) %></td>
+              <td><%= elem(pair_iteration, 5) %></td>
 
               <td class="text-right">
-                <span><%= link "Show", to: pair_iteration_path(@conn, :show, %Wol.Organization.PairIteration{id: elem(pair_iteration, 3)}), class: "btn btn-default btn-xs" %></span>
-                <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, %Wol.Organization.PairIteration{id: elem(pair_iteration, 3)}), class: "btn btn-default btn-xs" %></span>
-                <span><%= link "Delete", to: pair_iteration_path(@conn, :delete, %Wol.Organization.PairIteration{id: elem(pair_iteration, 3)}), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+                <span><%= link "Show", to: pair_iteration_path(@conn, :show, %Wol.Organization.PairIteration{id: elem(pair_iteration, 7)}), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, %Wol.Organization.PairIteration{id: elem(pair_iteration, 7)}), class: "btn btn-default btn-xs" %></span>
+                <span><%= link "Delete", to: pair_iteration_path(@conn, :delete, %Wol.Organization.PairIteration{id: elem(pair_iteration, 7)}), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
               </td>
             </tr>
         <% end %>

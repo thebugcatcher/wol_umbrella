@@ -10,6 +10,10 @@
           <tr><td><strong>Person1</strong></td> <td><%= @person1.name %></td></tr>
           <tr><td><strong>Person2</strong></td> <td><%= @person2.name %></td></tr>
           <tr><td><strong>Iteration</strong></td> <td><%= @pair_iteration.iteration_id %></td></tr>
+          <tr><td><strong>Restaurant</strong></td> <td><%= @pair_iteration.restaurant %></td></tr>
+          <tr><td><strong>Restaurant details</strong></td> <td><%= @pair_iteration.restaurant_details %></td></tr>
+          <tr><td><strong>Rating</strong></td> <td><%= @pair_iteration.rating %></td></tr>
+          <tr><td><strong>Comments</strong></td> <td><%= @pair_iteration.comments %></td></tr>
         </tbody>
       </table>
     </div>
