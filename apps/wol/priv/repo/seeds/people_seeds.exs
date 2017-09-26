@@ -1,9 +1,8 @@
 alias Wol.{Repo, Organization.Person}
 
 Repo.insert!(%Person{email: "adi.iyengar@annkissam.com", name: "Adi Iyengar"})
-Repo.insert!(%Person{email: "allison.dyer@annkissam.com", name: "Allison Dyer"})
-Repo.insert!(%Person{email: "clarence.lee@annkissam.com", name: "Clarence Lee"})
-Repo.insert!(%Person{email: "david.argueta@annkissam.com", name: "David Argueta"})
+Repo.insert!(%Person{email: "arina.igumenshcheva@annkissam.com", name: "Arina Igumenshcheva"})
+Repo.insert!(%Person{email: "dana.lewis@annkissam.com", name: "Dana Lewis"})
 Repo.insert!(%Person{email: "josh.adams@annkissam.com", name: "Josh Adams"})
-Repo.insert!(%Person{email: "ryan.vasios@annkissam.com", name: "Ryan Vasios"})
-Repo.insert!(%Person{email: "zoe.carlberg@annkissam.com", name: "Zoe Carlberg"})
+Repo.insert!(%Person{email: "matteo.ramosmucci@annkissam.com", name: "Matteo Ramos-Mucci"})
+Repo.insert!(%Person{email: "sarah.kulik@annkissam.com", name: "Sarah Kulik"})
