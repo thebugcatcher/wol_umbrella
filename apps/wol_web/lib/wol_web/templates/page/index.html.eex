@@ -5,6 +5,8 @@
 
 </div>
 
+<audio id="xyz" src="/images/cheering.mp3" preload="auto"></audio>
+
 <div class="jumbotron">
   <div align="center">
       <h1>The Wheel of Lunch is ready!</h1>
@@ -124,10 +126,9 @@
           // Get the segment indicated by the pointer on the wheel background which is at 0 degrees.
           var winningSegment = theWheel.getIndicatedSegment();
 
+          document.getElementById('xyz').play();
           // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
           if (confirm("The Wheel has picked " + winningSegment.text + ". Hit Ok to select the next person..") == true) {
-            var audio = new Audio('/images/cheering.mp3');
-            audio.play();
             window.location = '/first_select?name=' + winningSegment.text;
           }else{
             resetWheel();
