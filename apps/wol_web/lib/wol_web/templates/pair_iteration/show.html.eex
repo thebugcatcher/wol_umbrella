@@ -1,25 +1,24 @@
 <div class="container">
-  <h2>Show Pair iteration</h2>
+  <div class="panel panel-default" style="overflow: auto">
+    <div class="panel-heading">
+      <h2 class="panel-title">Showing Lunch</h2>
+    </div>
 
-  <ul>
+    <div class="panel-body">
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr><td><strong>Person1</strong></td> <td><%= @pair_iteration.person1_id %></td></tr>
+          <tr><td><strong>Person2</strong></td> <td><%= @pair_iteration.person2_id %></td></tr>
+          <tr><td><strong>Iteration</strong></td> <td><%= @pair_iteration.iteration_id %></td></tr>
+        </tbody>
+      </table>
+    </div>
 
-    <li>
-      <strong>Person1:</strong>
-      <%= @pair_iteration.person1_id %>
-    </li>
-
-    <li>
-      <strong>Person2:</strong>
-      <%= @pair_iteration.person2_id %>
-    </li>
-
-    <li>
-      <strong>Iteration:</strong>
-      <%= @pair_iteration.iteration_id %>
-    </li>
-
-  </ul>
-
-  <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, @pair_iteration) %></span>
-  <span><%= link "Back", to: pair_iteration_path(@conn, :index) %></span>
+    <div class="panel-footer clearfix">
+      <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, @pair_iteration), class: "btn btn-default btn-xs" %></span>
+      <%= link to: pair_iteration_path(@conn, :index), class: "btn btn-default btn-xs pull-left" do %>
+        <span aria-hidden="true">&larr;</span> Back to Lunches
+      <% end %>
+    </div>
+  </div>
 </div>

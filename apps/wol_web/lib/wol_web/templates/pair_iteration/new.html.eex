@@ -1,7 +1,16 @@
 <div class="container">
-  <h2>New Pair iteration</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">New Lunch</h2>
+    </div>
 
-  <%= render "form.html", Map.put(assigns, :action, pair_iteration_path(@conn, :create)) %>
+    <div class="panel-body">
+      <%= render "form.html", Map.put(assigns, :action, pair_iteration_path(@conn, :create)) %>
+    </div>
 
-  <span><%= link "Back", to: pair_iteration_path(@conn, :index) %></span>
+    <div class="panel-footer clearfix">
+      <%= link to: pair_iteration_path(@conn, :index), class: "btn btn-default btn-xs pull-left" do %>
+        <span aria-hidden="true">&larr;</span> Back to all Lunches
+      <% end %>
+    </div>
 </div>
