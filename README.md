@@ -27,7 +27,7 @@
 ### Edge cases
 
 - [x] When there's odd number of people
-- [ ] When last two/three people left are related (nC2 number of people, where n is the number of relationships)
+- [x] When last two/three people left are related (nC2 number of people, where n is the number of relationships)
 
 
 ## TODO
