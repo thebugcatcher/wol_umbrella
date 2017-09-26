@@ -16,6 +16,7 @@
     </div>
 
     <ul class="nav navbar-nav">
+      <li class="<%= active_class_for_nav_tab(@conn, "pair_generator") %>"><a href="<%= page_path(@conn, :pair_generator) %>">Pair-Generator</a></li>
       <li class="<%= active_class_for_nav_tab(@conn, "people") %>"><a href="<%= person_path(@conn, :index) %>">People</a></li>
       <li class="<%= active_class_for_nav_tab(@conn, "pair_iterations") %>"><a href="<%= pair_iteration_path(@conn, :index) %>">Lunches</a></li>
       <li class="<%= active_class_for_nav_tab(@conn, "about") %>"><a href="<%= page_path(@conn, :about) %>">About</a></li>

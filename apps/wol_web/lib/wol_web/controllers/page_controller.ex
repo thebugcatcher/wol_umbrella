@@ -87,7 +87,11 @@ defmodule WolWeb.PageController do
     end
   end
 
-  def generate_pairs(conn, %{"num" => num}) do
+  def pair_generator(conn, _params) do
+    render conn, "pair_generator.html"
+  end
+
+  def generate_pairs(conn, %{"generate" => %{"num" => num}}) do
     all_people = Org.list_people()
     num = String.to_integer(num)
 

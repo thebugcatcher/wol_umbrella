@@ -22,6 +22,7 @@ defmodule WolWeb.Router do
     get "/first_select/", PageController, :first_select
     get "/second_select/", PageController, :second_select
     get "/generate_pairs/", PageController, :generate_pairs
+    get "/pair_generator/", PageController, :pair_generator
 
     resources "/people", PersonController
     resources "/pair_iterations", PairIterationController
