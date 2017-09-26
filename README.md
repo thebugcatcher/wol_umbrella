@@ -33,7 +33,8 @@
 ## TODO
 
 - [ ] Move spinning to a different route
-- [x] UI to add mentors
+- [x] UI to add mentors/supervisors
+- [x] UI to see people names in lunches
 - [ ] Add a route for autogeneration of pairs
 - [ ] Good CSS font
 - [x] Uniqueness constraint for name, email
