@@ -77,7 +77,6 @@ defmodule WolWeb.PageController do
         end
 
         conn
-        |> assign(:person, nil)
         |> put_flash(:info, "Paired: #{person1.name} & #{person2.name}")
         |> redirect(to: page_path(conn, :index))
       {:error, _} ->
@@ -86,5 +85,53 @@ defmodule WolWeb.PageController do
         |> put_flash(:error, "Unexpected Error! Try again.")
         |> redirect(to: page_path(conn, :index))
     end
+  end
+
+  def generate_pairs(conn, %{"num" => num}) do
+    all_people = Org.list_people()
+    num = String.to_integer(num)
+
+    text = 1..num
+      |> Enum.map(fn(_x) ->
+        people = all_people
+          |> Filterer.filter(index_filters())
+
+        person1 = Enum.random(people)
+
+        {:ok, iteration} = IterationsManager.check_iteration()
+
+        people = all_people
+          |> Filterer.filter(first_select_filters(person1))
+
+        people = case Enum.count(people) do
+          0 -> all_people
+            |> Filterer.filter(second_chance_filters(person1))
+          _ -> people
+        end
+
+        person2 = Enum.random(people)
+
+        attrs = %{
+          person1_id: person1.id,
+          person2_id: person2.id,
+          iteration_id: iteration.id
+        }
+
+        Org.create_pair_iteration(attrs)
+
+        try do
+          #Emailer.send_pair_notification([person1, person2])
+        rescue
+          _ -> :ok
+        end
+
+        {person1.name, person2.name}
+    end)
+    |> Enum.reduce("Pairs: ", fn({p1, p2}, acc) -> acc <> "{#{p1}, #{p2}}, " end)
+    |> String.trim_trailing(", ")
+
+    conn
+    |> put_flash(:info, text)
+    |> redirect(to: page_path(conn, :index))
   end
 end
