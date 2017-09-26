@@ -7,10 +7,10 @@ defmodule WolWeb.PageController do
   alias ListFilterer, as: Filterer
 
   def index(conn, params) do
+    {:ok, iteration} = IterationsManager.check_iteration()
+
     people = Org.list_people()
       |> Filterer.filter(index_filters())
-
-    iteration = Org.get_current_iteration()
 
     {queryable, rummage} = Org.Person
       |> Rummage.Ecto.rummage(params["rummage"])

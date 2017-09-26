@@ -20,7 +20,7 @@
 ### Additional
 
 - [x] Can generate a given number of pairs following all the rules without a UI
-- [ ] Doesn't match same people upto a configured number of iterations
+- [x] Doesn't match same people upto a configured number of iterations
 - [x] Session Authentication
 - [x] Mobile friendly
 

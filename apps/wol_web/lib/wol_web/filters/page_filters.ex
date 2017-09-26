@@ -4,31 +4,40 @@ defmodule WolWeb.PageFilters do
   alias Filterer.Filter
 
   def index_filters() do
-    [unpaired_filter()]
+    paired_ids = Org.paired_person_ids()
+    [unpaired_filter(paired_ids)]
   end
 
   def first_select_filters(person) do
-    [unpaired_filter(), relationship_filter(person), not_identical(person)]
+    paired_ids = Org.paired_person_ids()
+    relative_ids = Org.load_relatives(person)
+    paired_person_ids = Org.load_paired_person_ids(person, 2)
+
+    [unpaired_filter(paired_ids), relationship_filter(person, relative_ids), not_identical(person), different_pair(person, paired_person_ids)]
   end
 
   def second_chance_filters(person) do
-    [unpaired_filter(), not_identical(person)]
+    paired_ids = Org.paired_person_ids()
+    [unpaired_filter(paired_ids), not_identical(person)]
   end
 
-  defp unpaired_filter() do
-    paired_ids = Org.paired_person_ids()
-
+  defp unpaired_filter(paired_ids) do
     %Filter{
       fun: &Enum.member?(paired_ids, &1.id),
       desired: false
     }
   end
 
-  defp relationship_filter(person) do
-    relative_ids = Org.load_relatives(person)
-
+  defp relationship_filter(person, relative_ids) do
     %Filter{
       fun: &Enum.member?(relative_ids, &1.id),
+      desired: false
+    }
+  end
+
+  defp different_pair(person, paired_person_ids) do
+    %Filter{
+      fun: &Enum.member?(paired_person_ids, &1.id),
       desired: false
     }
   end

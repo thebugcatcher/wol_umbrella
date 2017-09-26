@@ -366,4 +366,27 @@ defmodule Wol.Organization do
 
     Repo.one(query) == 0
   end
+
+  def load_paired_person_ids(person, num \\ 1) do
+    person_id = person.id
+    iteration_id = get_current_iteration().id
+    low = iteration_id - num
+
+    query = from pi in PairIteration,
+      where: (pi.iteration_id > ^low and pi.iteration_id < ^iteration_id) and
+        (pi.person1_id == ^person_id or pi.person2_id == ^person_id)
+
+    query
+    |> Repo.all()
+    |> Enum.map(fn(pi) ->
+      cond do
+        pi.person1_id == person_id ->
+          pi.person2_id
+        pi.person2_id == person_id ->
+          pi.person1_id
+        true ->
+          nil
+      end
+    end)
+  end
 end

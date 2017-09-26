@@ -7,7 +7,7 @@
 
 <div class="jumbotron">
   <div align="center">
-      <h1>The Wheel of Lunch is ready to be Spun!</h1>
+      <h1>The Wheel of Lunch is ready!</h1>
       <br />
       <p>Hit the spin button to pair <strong> <%=@person.name %> </strong> with someone.</p>
       <br />
