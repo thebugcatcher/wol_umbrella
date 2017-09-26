@@ -11,7 +11,7 @@ defmodule Emailer do
 
   def send_pair_notification(people) do
     users = for person <- people do
-      {user.name, user.email}
+      {person.name, person.email}
     end
 
     # users = [{"Adi Iyengar", "adi.iyengar@annkissam.com"}]
