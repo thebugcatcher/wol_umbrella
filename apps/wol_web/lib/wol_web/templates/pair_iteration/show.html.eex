@@ -1,23 +1,25 @@
-<h2>Show Pair iteration</h2>
+<div class="container">
+  <h2>Show Pair iteration</h2>
 
-<ul>
+  <ul>
 
-  <li>
-    <strong>Person1:</strong>
-    <%= @pair_iteration.person1_id %>
-  </li>
+    <li>
+      <strong>Person1:</strong>
+      <%= @pair_iteration.person1_id %>
+    </li>
 
-  <li>
-    <strong>Person2:</strong>
-    <%= @pair_iteration.person2_id %>
-  </li>
+    <li>
+      <strong>Person2:</strong>
+      <%= @pair_iteration.person2_id %>
+    </li>
 
-  <li>
-    <strong>Iteration:</strong>
-    <%= @pair_iteration.iteration_id %>
-  </li>
+    <li>
+      <strong>Iteration:</strong>
+      <%= @pair_iteration.iteration_id %>
+    </li>
 
-</ul>
+  </ul>
 
-<span><%= link "Edit", to: pair_iteration_path(@conn, :edit, @pair_iteration) %></span>
-<span><%= link "Back", to: pair_iteration_path(@conn, :index) %></span>
+  <span><%= link "Edit", to: pair_iteration_path(@conn, :edit, @pair_iteration) %></span>
+  <span><%= link "Back", to: pair_iteration_path(@conn, :index) %></span>
+</div>

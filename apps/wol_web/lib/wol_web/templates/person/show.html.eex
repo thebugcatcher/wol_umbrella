@@ -1,18 +1,29 @@
-<h2>Show Person</h2>
+<div class="container">
+  <h2>Showing Person</h2>
 
-<ul>
+  <ul>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @person.name %>
-  </li>
+    <li>
+      <strong>Name:</strong>
+      <%= @person.name %>
+    </li>
 
-  <li>
-    <strong>Email:</strong>
-    <%= @person.email %>
-  </li>
+    <li>
+      <strong>Email:</strong>
+      <%= @person.email %>
+    </li>
 
-</ul>
+    <li>
+      <strong>Mentor:</strong>
+      <%= @mentor && @mentor.name || "N/A" %>
+    </li>
 
-<span><%= link "Edit", to: person_path(@conn, :edit, @person) %></span>
-<span><%= link "Back", to: person_path(@conn, :index) %></span>
+    <li>
+      <strong>Supervisor:</strong>
+      <%= @supervisor && @supervisor.name || "N/A"%>
+    </li>
+  </ul>
+
+  <span><%= link "Edit", to: person_path(@conn, :edit, @person) %></span>
+  <span><%= link "Back", to: person_path(@conn, :index) %></span>
+</div>

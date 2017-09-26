@@ -1,5 +1,7 @@
-<h2>Edit Pair iteration</h2>
+<div class="container">
+  <h2>Edit Pair iteration</h2>
 
-<%= render "form.html", Map.put(assigns, :action, pair_iteration_path(@conn, :update, @pair_iteration)) %>
+  <%= render "form.html", Map.put(assigns, :action, pair_iteration_path(@conn, :update, @pair_iteration)) %>
 
-<span><%= link "Back", to: pair_iteration_path(@conn, :index) %></span>
+  <span><%= link "Back", to: pair_iteration_path(@conn, :index) %></span>
+</div>

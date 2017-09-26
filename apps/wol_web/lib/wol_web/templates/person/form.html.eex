@@ -18,6 +18,18 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :mentor, class: "control-label" %>
+    <%= select(f, :mentor, [""] ++ Enum.map(@people, & &1.name)) %>
+    <%= error_tag f, :mentor %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :supervisor, class: "control-label" %>
+    <%= select(f, :supervisor, [""] ++ Enum.map(@people, & &1.name)) %>
+    <%= error_tag f, :supervisor %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
