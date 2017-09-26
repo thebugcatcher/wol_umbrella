@@ -403,6 +403,8 @@ Winwheel.prototype.draw = function(clearTheCanvas)
             if (this.drawText == true)
             {
                 this.drawSegmentText();
+                var audio = new Audio('/images/audio.mp3');
+                audio.play();
             }
         }
 
@@ -1765,6 +1767,8 @@ Winwheel.prototype.startAnimation = function()
         // Do the tween animation passing the properties from the animation object as an array of key => value pairs.
         // Keep reference to the tween object in the wheel as that allows pausing, resuming, and stopping while the animation is still running.
         this.tween = TweenMax.to(this, this.animation.duration, properties);
+        var audio = new Audio('/images/audio.mp3');
+        audio.play();
     }
 }
 

@@ -126,6 +126,8 @@
 
           // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
           if (confirm("The Wheel has picked " + winningSegment.text + ". Hit Ok to select the next person..") == true) {
+            var audio = new Audio('/images/cheering.mp3');
+            audio.play();
             window.location = '/first_select?name=' + winningSegment.text;
           }else{
             resetWheel();
