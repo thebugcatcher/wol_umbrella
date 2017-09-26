@@ -14,7 +14,7 @@
 
 - [x] Maintains a history of pairs
 - [x] Emails pairs when selected
-- [ ] Sound effects
+- [x] Sound effects
 - [x] Matches non-related pairs
 
 ### Additional
