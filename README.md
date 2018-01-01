@@ -22,6 +22,7 @@
 - [x] Can generate a given number of pairs following all the rules without a UI
 - [x] Doesn't match same people upto a configured number of iterations
 - [x] Session Authentication
+- [x] Restaurant details, Ratings, Comments
 - [x] Mobile friendly
 
 ### Edge cases
